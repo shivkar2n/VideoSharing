@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <video width="640" video="360" autoplay>
+    <source src="{{url_for('static/video/',filename=) }}" type="video/mp4">
+    </video>
+    <h2>{{ Video.Title}}</h2>
+    <h3>{{ Video.user.Username}}</h3>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<form method="POST" enctype="multipart/form-data">
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Enter Video Title" aria-label="Username" name="Title">
+  </div>
+  <div class="input-group mb-3">
+    <input type="file" class="form-control" id="inputGroupFile02" name="Video">
+    <button class="input-group-text" for="inputGroupFile02" type="submit">Upload</button>
+  </div>
+</form>
+
+{% endblock %}

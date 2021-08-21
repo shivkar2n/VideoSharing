@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>My Profile</h2>
+
+<div class="list-group">
+  <li class="list-group-item">Name: {{ current_user.Username }}</li>
+  <li class="list-group-item">Description: {{ current_user.Description }}</li>
+  <li class="list-group-item">Location: {{ current_user.Location }}</li>
+</div>
+
+<br>
+<div class="list-group">
+    <div class="row">
+      {% for Video in Videos %}
+        {% if Video.user.id == current_user.id %}
+          <div class="col-6">
+            <h4><b>{{ Video.Title }}</b></h4>
+            <video width="320" video="180" controls>
+              <source src="static/video/{{ Video.FileName }}" type="video/mp4" control>
+            </video>
+            </div>
+            <div class="card col" style="overflow-y:scroll; height:180px;">
+              <h5 class="text-primary">Comments</h5>
+              {% for Comment in Video.Comments %}
+                <ul class="list-group list-group-flush">
+                  <div style="overflow: hidden;">
+                    <p class="text-dark" style="float: left;">{{ Comment.Content }}</p>
+                    <p class="text-muted" style="float: right;">- {{ Comment.user.Username}}</p>
+                  </div>
+                </ul>
+              {% endfor %}
+          {% endif %}
+        </div>
+        <hr>
+      {% endfor %}
+    </div>
+</div>
+
+
+{% endblock%}

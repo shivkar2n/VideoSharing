@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post">
+  <div class="form-group">
+    <label for="exampleInputUsername1">Username</label>
+    <input type="text" class="form-control" name="Username" placeholder="Enter username">
+  </div>
+<br>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" name="Password" placeholder="Enter Password">
+  </div>
+<br>
+  <div class="form-group">
+    <small class="form-text text-muted">Not signed up? Register <a href="{{url_for('Register')}}">here.</a></small>
+    <br><br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </div>
+</form>
+{% endblock%}

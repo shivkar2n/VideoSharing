@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  {% for Video in Videos %}
+  <div class="container">
+    <div class="row">
+      <h2>{{ Video.Title }}</h2>
+      <h6 class="text-muted">Uploaded by: {{ Video.user.Username }}</h6>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        <video width="444" height="250" controls>
+          <source src="static/video/{{ Video.FileName }}" type="video/mp4">
+          <source src="static/video/{{ Video.FileName }}" type="video/mkv">
+        </video>
+      </div>
+      <div class="card col" style="overflow-y:scroll; height:250px;">
+        <h5 class="text-primary">Comments</h5>
+        {% for Comment in Video.Comments %}
+        <ul class="list-group list-group-flush">
+          <div style="overflow: hidden;">
+            <p class="text-dark" style="float: left;">{{ Comment.Content }}</p>
+            <p class="text-muted" style="float: right;">- {{ Comment.user.Username}}</p>
+          </div>
+        </ul>
+        {% endfor %}
+        <form method="post">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            Comment
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <div class="mb-3">
+                    <input type="hidden" name="VideoId" value="{{ Video.id }}">
+                    <input type="text" class="form-control" name="VideoComment" placeholder="Leave a comment">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <button type="submit" class="btn btn-primary">Post</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <hr>
+  {% endfor %}
+{% endblock%}

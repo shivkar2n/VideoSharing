@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <form method="post">
+  <div class="form-group">
+    <label for="UsernameForm">Username</label>
+    <input type="text" class="form-control" id="UsernameForm" name="Username" aria-describedby="emailHelp" placeholder="Enter username">
+  </div>
+<br>
+<div class="form-group">
+  <label for="PasswordForm">Password</label>
+  <input type="password" class="form-control" id="PasswordForm" name="Password" placeholder="Enter Password">
+</div>
+<br>
+<div class="form-group">
+  <label for="LocationForm">Location</label>
+  <input type="text" class="form-control" id="LocationForm" name="Location" placeholder="E.g Bangkok,Thailand">
+</div>
+<br>
+  <div class="form-group">
+    <label for="DescriptionForm">Description</label>
+    <input type="text" class="form-control" id="DescriptionForm" name="Description" placeholder="Describe Yourself">
+  </div>
+<br>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock%}
